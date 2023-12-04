@@ -37,8 +37,9 @@ pip3 install rich
 echo "===INSTALL COMPLETE==="
 
 echo "===Backup Current iptables Config==="
-mkdir ~/ipban
+mkdir ~/ipban > /dev/null 2>&1
 curl -LO 'https://raw.githubusercontent.com/bsy0317/AbuseIP-AutoBan/main/ban_bulk.py' -o ~/ipban/ban_bulk.py
+curl -LO 'https://raw.githubusercontent.com/bsy0317/AbuseIP-AutoBan/main/cron.sh' -o ~/ipban/cron.sh
 python3 ~/ipban/ban_bulk.py backup
 
 echo "===INSTALL Complete IPBAN==="
