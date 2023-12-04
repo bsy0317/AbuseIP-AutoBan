@@ -43,3 +43,9 @@ curl -LO 'https://raw.githubusercontent.com/bsy0317/AbuseIP-AutoBan/main/cron.sh
 python3 ~/ipban/ban_bulk.py backup
 
 echo "===INSTALL Complete IPBAN==="
+
+echo "===INSTALLING CRON JOB==="
+echo "===Synchronize AbuseIP every 30 minutes==="
+echo "*/30 * * * * /bin/sh ~/ipban/cron.sh" >> /var/spool/cron/root
+crontab -l
+echo "===CRON JOB INSTALLED==="
