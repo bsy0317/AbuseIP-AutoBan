@@ -77,6 +77,9 @@ print("[green]Added new IP rules[/green]")
 # iptables rules 저장
 subprocess.run(["sudo", "service", "iptables", "save"])
 
+# iptables rules 적용
+subprocess.run(["sudo", "service", "iptables", "restart"])
+
 # abuseipdb.old 파일 업데이트
 with open(old_file_path, "w") as old_file:
 	for ip in ip_addresses:
