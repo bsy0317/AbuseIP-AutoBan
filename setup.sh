@@ -44,8 +44,10 @@ python3 ~/ipban/ban_bulk.py backup
 
 echo "===INSTALL Complete IPBAN==="
 
-echo "===INSTALLING CRON JOB==="
-echo "===Synchronize AbuseIP every 30 minutes==="
-echo "*/30 * * * * /bin/sh ~/ipban/cron.sh" >> /var/spool/cron/root
-crontab -l
-echo "===CRON JOB INSTALLED==="
+# echo "===INSTALLING CRON JOB==="
+# echo "===Synchronize AbuseIP every 15 minutes==="
+# echo "###Synchronize AbuseIP every 15 minutes" >> /var/spool/cron/root
+# echo "*/15 * * * * /bin/sh /root/ipban/cron.sh > /root/ipban/cron.sh.log 2>&1" >> /var/spool/cron/root
+# crontab -l
+# service crond restart
+# echo "===CRON JOB INSTALLED==="

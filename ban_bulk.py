@@ -74,6 +74,9 @@ with open(iptables_rules_file, "wb") as rules_file:
 subprocess.run(["sudo", "iptables-restore", "--noflush"], input=open(iptables_rules_file, "rb").read())
 print("[green]Added new IP rules[/green]")
 
+# iptables rules 저장
+subprocess.run(["sudo", "service", "iptables", "save"])
+
 # abuseipdb.old 파일 업데이트
 with open(old_file_path, "w") as old_file:
 	for ip in ip_addresses:
