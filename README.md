@@ -24,7 +24,7 @@ This Python script fetches a list of abusive IP addresses from AbuseIPDB and blo
 
 ## Usage
 
-To execute the script, run the Python file `ip_ban.py`. Additionally, you can use the following command-line arguments:
+To execute the script, run the Python file `ban_bulk_ipset.py`. Additionally, you can use the following command-line arguments:
 
 - `reset`: Restores the original `iptables` rules.
 - `backup`: Backs up the original `iptables` rules.
@@ -48,7 +48,7 @@ To execute the script, run the Python file `ip_ban.py`. Additionally, you can us
 3. Execute the script:
 
     ```bash
-    python ip_ban.py
+    python ban_bulk_ipset.py
     ```
 
 ## Contributions
