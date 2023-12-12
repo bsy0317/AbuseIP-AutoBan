@@ -7,7 +7,8 @@ import shutil
 
 repo_url = "https://github.com/borestad/blocklist-abuseipdb.git"
 repo_folder = "/tmp/ipban"
-file_name = "abuseipdb-s100-30d.ipv4"	# 정확도 100, 30일 이내에 등록된 IP만
+file_name = "abuseipdb-s100-7d.ipv4"	# 정확도 100, 7일 이내에 등록된 IP만
+except_ip = ["211.105.21.195"]	# 제외할 IP
 
 # 매개변수 reset이 존재하면 iptables 원본 파일로 복원
 if len(sys.argv) > 1 and sys.argv[1] == "reset":
@@ -38,6 +39,7 @@ if subprocess.run(["sudo", "iptables", "-C", "INPUT", "-m", "set", "--match-set"
 
 # ipset blockip을 비움
 subprocess.run(["sudo", "ipset", "flush", "blockip"])
+subprocess.run(["sudo", "ipset", "save"])
 print("[yellow]Flushed blockip ipset[/yellow]")
 
 # 모든 파일 삭제 / git conflict 방지
@@ -60,7 +62,8 @@ with open(file_path, "r") as file:
 
 # ipset에 IP들을 추가
 for ip in track(ip_addresses, description="Adding IP addresses..."):
-	subprocess.run(["sudo", "ipset", "add", "blockip", ip])
+	if ip not in except_ip:
+		subprocess.run(["sudo", "ipset", "add", "blockip", ip])
 
 # ipset blockip을 저장
 subprocess.run(["sudo", "ipset", "save", "blockip"])
